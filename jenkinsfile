@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Install dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run script') {
+            steps {
+                sh 'python src/pdf2image_convert_from_path.py sample.pdf output'
+            }
+        }
+    }
+}
+
