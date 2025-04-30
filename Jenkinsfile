@@ -8,9 +8,9 @@ pipeline {
             }
         }
 
-        stage('Run script') {
+        stage('Run OCR Script') {
             steps {
-                sh 'python src/pdf2image_convert_from_path.py sample.pdf output'
+                sh 'python src/pdf2image_convert_from_path.py src/Agro-14.pdf output/'
             }
         }
     }
