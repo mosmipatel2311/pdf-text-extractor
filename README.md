@@ -10,6 +10,15 @@ This Python script extracts text from scanned PDF documents using OCR and output
 - Outputs both `.txt` and `.md` (Markdown) files
 - Jenkinsfile included for CI/CD pipeline automation
 
+
+## CI/CD Support
+
+This project supports automated testing and deployment using:
+
+- ✅ **Jenkins** (via `Jenkinsfile`)
+- ✅ **GitHub Actions** (via `.github/workflows/ci.yml`)
+
+
 ---
 
 
