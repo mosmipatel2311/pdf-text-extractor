@@ -1,17 +1,33 @@
-name: Python QA CI
+name: OCR QA Check
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]  # You can change this to 'qa' or another branch
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  qa-check:
+    runs-on: windows-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Run script
-        run: python src/pdf2image_convert_from_path.py sample.pdf output
+        run: |
+          python -m venv venv
+          .\venv\Scripts\activate
+          pip install -r requirements.txt
+
+      - name: Run OCR Script
+        run: |
+          .\venv\Scripts\activate
+          python src\pdf2image_convert_from_path.py
+
+      - name: Check Markdown Output
+        run: |
+          if not exist "output_agrotechmdfiles_mini\markdown\page_1.md" exit 1
