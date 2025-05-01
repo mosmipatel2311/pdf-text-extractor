@@ -1,4 +1,0 @@
-pytesseract
-PyMuPDF
-Pillow
-opencv-python
